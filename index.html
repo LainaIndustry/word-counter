@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Count words, characters, sentences and paragraphs instantly with our free online Word Counter. Analyze text and track your writing goals.">
+  <meta name="robots" content="index, follow">
+  <title>Free Word Counter Online - Word & Character Counter</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/counter.js" defer></script>
+  <script src="js/editor.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">
+      <span class="logo-icon">W</span> WordCounter
+    </a>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+    <nav class="main-nav" id="mainNav">
+      <a class="active" href="index.html">Home</a>
+      <a href="#tools">More Tools</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#blog">Writing Guides</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">FREE ONLINE WRITING TOOL</p>
+      <h1>Word Counter</h1>
+      <p>Count words and characters, analyze your text, and improve your writing — instantly.</p>
+    </section>
+
+    <section class="workspace container" aria-label="Word counter workspace">
+      <div class="editor-column">
+        <div class="editor-toolbar">
+          <button type="button" id="pasteBtn">Paste</button>
+          <button type="button" id="cleanBtn">Clean Text</button>
+          <button type="button" id="uploadBtn">Upload</button>
+          <button type="button" id="copyBtn">Copy</button>
+          <button type="button" id="downloadBtn">Download</button>
+          <button type="button" id="clearBtn" class="danger-btn">Clear</button>
+          <input type="file" id="fileInput" accept=".txt,.csv,.md,.html,.json" hidden>
+        </div>
+
+        <textarea id="textInput"
+          placeholder="Type or paste your text here to count words and characters..."
+          aria-label="Enter text to analyze"></textarea>
+
+        <div class="editor-footer">
+          <span id="statusMessage" role="status">Ready to count</span>
+          <span id="liveWordCount">0 words</span>
+        </div>
+
+        <div class="goal-panel">
+          <label for="wordGoal">Writing goal (words)</label>
+          <div class="goal-controls">
+            <input type="number" id="wordGoal" min="1" value="500">
+            <button type="button" id="setGoalBtn" class="primary-btn">Set Goal</button>
+          </div>
+          <div class="progress-track">
+            <div id="goalProgress" class="progress-fill"></div>
+          </div>
+          <p id="goalMessage">Your progress will appear here.</p>
+        </div>
+      </div>
+
+      <aside class="stats-column" aria-label="Text statistics">
+        <div class="panel">
+          <h2>Text Statistics</h2>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span>Words</span><strong id="wordCount">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>Characters</span><strong id="charCount">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>No spaces</span><strong id="charNoSpaces">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>Sentences</span><strong id="sentenceCount">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>Paragraphs</span><strong id="paragraphCount">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>Unique words</span><strong id="uniqueCount">0</strong>
+            </div>
+            <div class="stat-card">
+              <span>Reading time</span><strong id="readingTime">0 min</strong>
+            </div>
+            <div class="stat-card">
+              <span>Speaking time</span><strong id="speakingTime">0 min</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Keyword Density</h2>
+          <p class="muted">Most frequently used words</p>
+          <div id="keywordList" class="keyword-list">
+            <p class="empty-state">Enter text to see keywords.</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="container content-section" id="tools">
+      <div class="section-heading">
+        <p class="eyebrow">WRITE SMARTER</p>
+        <h2>Explore More Writing Tools</h2>
+        <p>Useful utilities to help you prepare, review and improve your text.</p>
+      </div>
+
+      <div class="tool-grid">
+        <a class="tool-card" href="#editor">
+          <span class="tool-icon">Aa</span>
+          <h3>Character Counter</h3>
+          <p>Count characters with and without spaces.</p>
+        </a>
+        <a class="tool-card" href="#editor">
+          <span class="tool-icon">¶</span>
+          <h3>Sentence Counter</h3>
+          <p>Find the number of sentences in your text.</p>
+        </a>
+        <a class="tool-card" href="#editor">
+          <span class="tool-icon">#</span>
+          <h3>Paragraph Counter</h3>
+          <p>Measure paragraphs in your document.</p>
+        </a>
+        <a class="tool-card" href="#editor">
+          <span class="tool-icon">⌕</span>
+          <h3>Keyword Analyzer</h3>
+          <p>Review frequently used words.</p>
+        </a>
+        <a class="tool-card" href="#editor">
+          <span class="tool-icon">◷</span>
+          <h3>Reading Time</h3>
+          <p>Estimate how long your text takes to read.</p>
+        </a>
+        <a class="tool-card" href="#editor">
+          <span class="tool-icon">Aa</span>
+          <h3>Text Cleaner</h3>
+          <p>Remove extra spaces and tidy up text.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="container content-section article-section" id="how-it-works">
+      <h2>What Is a Word Counter?</h2>
+      <p>A word counter is an online tool that calculates the number of words in a text. It can also measure characters, sentences and paragraphs. Writers, students, teachers, bloggers and professionals use word counters to meet writing requirements and review documents.</p>
+
+      <h2>How to Use This Word Counter</h2>
+      <ol>
+        <li>Type or paste your text into the editor.</li>
+        <li>Review the word, character, sentence and paragraph counts.</li>
+        <li>Check keyword frequency and estimated reading time.</li>
+        <li>Set a writing goal if you want to track your progress.</li>
+        <li>Copy or download your text when you finish.</li>
+      </ol>
+
+      <h2>Why Word Count Matters</h2>
+      <p>Word limits are important for assignments, essays, articles, reports, applications and social media posts. Checking word count as you write helps you stay within the required length and plan your content more effectively.</p>
+
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list" id="blog">
+        <details>
+          <summary>How do I count words online?</summary>
+          <p>Paste or type your text into the editor. The tool automatically calculates the word count.</p>
+        </details>
+        <details>
+          <summary>What is the difference between words and characters?</summary>
+          <p>Words are units of text separated by whitespace. Characters include letters, numbers, punctuation and spaces.</p>
+        </details>
+        <details>
+          <summary>Can I count characters without spaces?</summary>
+          <p>Yes. The No Spaces statistic excludes whitespace characters from the character count.</p>
+        </details>
+        <details>
+          <summary>Does this tool save my text?</summary>
+          <p>This version processes text in your browser and does not send the editor content to a server. Your text is not saved automatically.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid container">
+      <div>
+        <a class="logo footer-logo" href="index.html">WordCounter</a>
+        <p>A simple tool to count words and understand your writing.</p>
+      </div>
+      <div>
+        <h3>Tools</h3>
+        <a href="#tools">Character Counter</a>
+        <a href="#tools">Sentence Counter</a>
+        <a href="#tools">Keyword Analyzer</a>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </div>
+    </div>
+    <div class="copyright">
+      © <span id="currentYear"></span> WordCounter. All rights reserved.
+    </div>
+  </footer>
+</body>
+</html>
