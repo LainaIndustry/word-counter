@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact WordCounter with questions, suggestions or feedback.">
+  <title>Contact Us - WordCounter</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">
+      <span class="logo-icon">W</span> WordCounter
+    </a>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#tools">More Tools</a>
+      <a href="about.html">About Us</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <h1>Contact Us</h1>
+    <p>Have a question, suggestion or issue? Use the form below to
+      prepare an email.</p>
+
+    <form id="contactForm">
+      <label for="name">Your name</label>
+      <input id="name" name="name" autocomplete="name"
+        required maxlength="100">
+
+      <label for="email">Your email</label>
+      <input id="email" name="email" type="email"
+        autocomplete="email" required maxlength="254">
+
+      <label for="subject">Subject</label>
+      <input id="subject" name="subject" required maxlength="150">
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message"
+        required maxlength="5000"></textarea>
+
+      <button type="submit">Open Email App</button>
+      <p id="formStatus" role="status"></p>
+    </form>
+
+    <p>Note: This form does not send messages directly. It opens your
+      default email application with a prepared message.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="copyright">
+      © <span id="currentYear"></span> WordCounter
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+
+    document.getElementById("contactForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // IMPORTANT: Replace this address with your actual contact email.
+      const contactEmail = "your-email@example.com";
+
+      const form = event.currentTarget;
+      const data = new FormData(form);
+
+      const subject = String(data.get("subject") || "").trim();
+      const name = String(data.get("name") || "").trim();
+      const email = String(data.get("email") || "").trim();
+      const message = String(data.get("message") || "").trim();
+
+      const body = [
+        "Name: " + name,
+        "Reply email: " + email,
+        "",
+        message
+      ].join("\n");
+
+      const mailto = "mailto:" + contactEmail
+        + "?subject=" + encodeURIComponent(subject)
+        + "&body=" + encodeURIComponent(body);
+
+      document.getElementById("formStatus").textContent =
+        "Your email application should open. Send the message there.";
+
+      window.location.href = mailto;
+    });
+  </script>
+</body>
+</html>
